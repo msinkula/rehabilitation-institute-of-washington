@@ -48,31 +48,96 @@ function add_flexslider() {
 	
 	$attachments = get_children(array('post_parent' => get_the_ID(), 'order' => 'ASC', 'orderby' => 'menu_order', 'post_type' => 'attachment', 'post_mime_type' => 'image'/*,'caption' => $attachment->post_excerpt,*/ ));
 	
-	if ($attachments) { // see if there are images attached to posting ?>
+	if ($attachments) { // see if there are images attached to posting
         
-    <!-- Begin Slider --> 
-    <div class="flexslider">
-    <ul class="slides">
-    
-    <?php // create the list items for images with captions
-    
-    foreach ( $attachments as $attachment_id => $attachment ) { 
-    
-        echo '<li>';
-        echo wp_get_attachment_image($attachment_id, 'large');
-        echo '<p class="flexslider-caption">';
-        echo get_post_field('post_excerpt', $attachment->ID);
-        echo '</p>';
-        echo '</li>';
+		echo '<div class="flexslider">';
+		echo '<ul class="slides">';
+		
+		foreach ( $attachments as $attachment_id => $attachment ) { // create the list items for images with captions
+		
+			echo '<li>';
+			echo wp_get_attachment_image($attachment_id, 'large');
+			echo '<p class="flexslider-caption">';
+			echo get_post_field('post_excerpt', $attachment->ID);
+			echo '</p>';
+			echo '</li>';
+			
+		}
+		
+		echo '</ul>';
+		echo '</div>';
         
-    } ?>
-    
-    </ul>
-    </div>
-    <!-- End Slider -->
-        
-	<?php } // end see if images
+	} // end see if images
 	
-} // end add flexslider
+} 
+// 
+// Get My Title Tag
+function get_my_title_tag() {
+	
+	global $post;
+	
+	if ( is_home() || is_archive() || is_front_page() ) {  // for the Blog (Home) Page, Blog (Archives) Pages or the site’s Front Page
+	
+		bloginfo('description'); // retrieve the site tagline
+	
+	} 
+	
+	elseif ( is_page() || is_single() ) { // for your site’s Pages or Postings
+	
+		the_title(); // retrieve the page or posting title 
+	
+	} 
+	
+	if ( $post->post_parent ) { // for your site’s Parent Pages
+	
+		echo ' | '; // separator with spaces
+		echo get_the_title($post->post_parent);  // retrieve the parent page title
+		
+	}
+
+	echo ' | '; // separator with spaces
+	bloginfo('name'); // retrieve the site name
+	echo ' | '; // separator with spaces
+	echo 'Seattle, WA.'; // write in the location
+	
+}
+//
+
+// Get Child Pages 
+function get_child_pages() {
+	
+	global $post;
+	
+	rewind_posts(); // stop any previous loops 
+	query_posts(array('post_type' => 'page','numberposts' => -1,'post_status' => null,'post_parent' => $post->ID,'order' => 'ASC','orderby' => 'menu_order')); // query and order child pages 
+    
+	if (have_posts()) : while (have_posts()) : the_post(); 
+	
+		$childPermalink = get_permalink( $post->ID ); // post permalink
+		$childID = $post->ID; // post id
+		$childTitle = $post->post_title; // post title
+		$childExcerpt = $post->post_excerpt; // post excerpt
+        
+		echo '<article id="page-excerpt-'.$childID.'" class="page-excerpt">';
+		echo '<h3><a href="'.$childPermalink.'">'.$childTitle.' &raquo;</a></h3>';
+		echo '<p>'.$childExcerpt.' <a href="'.$childPermalink.'">Read More&nbsp;&raquo;</a></p>';
+		echo '</article>';
+        
+	endwhile; endif; 
+        
+}
+//
+
+// Get SEO Paragraph From Home Page
+function get_seo() {
+
+	$myPosting = get_post(8);
+	
+	$mySEO = $myPosting->post_content;
+	
+	echo $mySEO;
+	
+}
+//
 
 ?>

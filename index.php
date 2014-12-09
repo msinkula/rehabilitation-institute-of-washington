@@ -5,6 +5,8 @@
     
     <!-- Begin Text -->
     <div id="text">
+    <h2><?php if (is_category()) { single_cat_title(); } else { single_post_title(); } ?></h2>
+    <p><?php get_seo(); ?></p>
     <?php while (have_posts()) : the_post(); ?>
     <article id="post-excerpt-<?php the_ID(); ?>" class="post-excerpt">
     <h3><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?>&nbsp;&raquo;</a></h3>

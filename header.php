@@ -13,7 +13,7 @@ Author URI: http://www.premiumdw.com/
 <meta charset="<?php bloginfo('charset'); ?>">
 
 <!-- Begin Title Tag -->
-<title><?php if ( is_page('Home') ) { ?><?php bloginfo('description'); echo ' | '; ?><?php } ?><?php wp_title('|', true, 'right'); ?><?php bloginfo('name'); echo ' | Seattle, WA'; ?></title>
+<title><?php get_my_title_tag(); ?></title>
 <!-- End Title Tag -->
 
 <!-- Begin Meta -->
