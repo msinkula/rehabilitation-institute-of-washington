@@ -12,22 +12,11 @@ Author URI: http://www.premiumdw.com/
 add_editor_style( 'admin.css' );
 
 // Register Sidebar
-register_sidebars(array(
-	'name'          => 'Sidebar',
-	'before_widget' => '<div id="%1$s" class="widget-items %2$s">',
-	'after_widget'  => '</div>',
-	'before_title'  => '<h2 class="widget-title">',
-	'after_title'   => '</h2>'
-	));
+register_sidebars(array('name' => 'Sidebar', 'before_widget' => '<div id="%1$s" class="widget-items %2$s">', 'after_widget'  => '</div>', 'before_title'  => '<h2 class="widget-title">', 'after_title'   => '</h2>'));
 	
 // Register Menus
 function register_my_menus() {
-  register_nav_menus(
-    array(
-      'main-menu' => __( 'Main Menu' ),
-      'footer-menu' => __( 'Footer Menu' )
-    )
-  );
+  register_nav_menus(array('main-menu' => __( 'Main Menu' ),'footer-menu' => __( 'Footer Menu' )));
 }
 add_action( 'init', 'register_my_menus' );
 
@@ -46,7 +35,7 @@ add_theme_support( 'post-thumbnails' );
 // Add FlexSlider	
 function add_flexslider() { 
 	
-	$attachments = get_children(array('post_parent' => get_the_ID(), 'order' => 'ASC', 'orderby' => 'menu_order', 'post_type' => 'attachment', 'post_mime_type' => 'image'/*,'caption' => $attachment->post_excerpt,*/ ));
+	$attachments = get_children(array('post_parent' => get_the_ID(), 'order' => 'ASC', 'orderby' => 'menu_order', 'post_type' => 'attachment', 'post_mime_type' => 'image'));
 	
 	if ($attachments) { // see if there are images attached to posting
         

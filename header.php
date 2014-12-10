@@ -77,10 +77,10 @@ Author URI: http://www.premiumdw.com/
 <div id="header">
 
     <!-- Start Header Elements -->
-    <header id="header-elements">
+    <div id="header-elements">
         <h1 id="logo-riw"><a href="<?php echo get_settings('home'); ?>"><img src="<?php bloginfo('template_directory'); ?>/images/logo-riw.png" alt="<?php bloginfo('name'); ?>" /></a></h1>
         <p id="logo-carf"><a href="http://www.carf.org/" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/images/logo-carf.png" alt="CARF: Commission on Accreditation of Rehabilitation Facilities" /><span>Commission on Accreditation of Rehabilitation Facilities Member Since 1985.</span></a></p>
-    </header>
+    </div>
     <!-- End Header Elements -->
     
     <!-- Start Main Menu -->
