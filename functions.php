@@ -13,6 +13,7 @@ add_editor_style( 'admin.css' );
 
 // Register Sidebar
 register_sidebars(array('name' => 'Sidebar', 'before_widget' => '<div id="%1$s" class="widget-items %2$s">', 'after_widget'  => '</div>', 'before_title'  => '<h2 class="widget-title">', 'after_title'   => '</h2>'));
+//
 	
 // Register Menus
 function register_my_menus() {
@@ -65,7 +66,7 @@ function get_my_title_tag() {
 	
 	global $post;
 	
-	if ( is_home() || is_archive() || is_front_page() ) {  // for the Blog (Home) Page, Blog (Archives) Pages or the site’s Front Page
+	if ( is_front_page() ) {  // for the site’s Front Page
 	
 		bloginfo('description'); // retrieve the site tagline
 	
@@ -75,12 +76,18 @@ function get_my_title_tag() {
 	
 		the_title(); // retrieve the page or posting title 
 	
-	} 
+	}
+	
+	else { // for everything else
+	
+		bloginfo('description');
+		
+	}
 	
 	if ( $post->post_parent ) { // for your site’s Parent Pages
 	
 		echo ' | '; // separator with spaces
-		echo get_the_title($post->post_parent);  // retrieve the parent page title
+		echo get_the_title($post->post_parent); // retrieve the parent page title
 		
 	}
 
@@ -98,9 +105,9 @@ function get_child_pages() {
 	global $post;
 	
 	rewind_posts(); // stop any previous loops 
-	query_posts(array('post_type' => 'page','numberposts' => -1,'post_status' => null,'post_parent' => $post->ID,'order' => 'ASC','orderby' => 'menu_order')); // query and order child pages 
-    
-	if (have_posts()) : while (have_posts()) : the_post(); 
+	query_posts(array('post_type' => 'page', 'posts_per_page' => -1, 'post_status' => publish,'post_parent' => $post->ID,'order' => 'ASC','orderby' => 'menu_order')); // query and order child pages 
+
+	while (have_posts()) : the_post(); 
 	
 		$childPermalink = get_permalink( $post->ID ); // post permalink
 		$childID = $post->ID; // post id
@@ -112,7 +119,10 @@ function get_child_pages() {
 		echo '<p>'.$childExcerpt.' <a href="'.$childPermalink.'">Read More&nbsp;&raquo;</a></p>';
 		echo '</article>';
         
-	endwhile; endif; 
+	endwhile;
+	
+	// reset query
+	wp_reset_query();
         
 }
 //

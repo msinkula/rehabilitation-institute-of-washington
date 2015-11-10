@@ -103,6 +103,7 @@ textarea, input {
 	padding: 5px;
 	border-radius: 4px;
 	font-size: 1em;
+	margin-bottom: 10px;
 	}
 	
 input.wpcf7-submit, input.submit, input#searchsubmit {
@@ -130,6 +131,7 @@ label {
 	display:block;
 	font-size: 1.125em;
 	padding-top: 8px;
+	margin-bottom: 4px;
 	}
 
 /* UTILITY */
@@ -606,7 +608,7 @@ label {
 				
 			#sub-navigation-items li a, #sidebar li a  {
 					color: #a7a69a;
-					text-decoration: underline;				
+					text-decoration: underline;			
 					} 
 					
 			#sub-navigation-items li a:hover, #sidebar li a:hover {
@@ -848,6 +850,7 @@ label {
 		display: block;
 		padding: 10px 20px 4px 20px;
 		overflow: hidden;
+		text-align: right;
 		}
 		
 	#menu-main-title a {
