@@ -626,12 +626,12 @@ label {
 					text-decoration: underline;
 					}
 					
-			#sub-navigation-items li.current_page_item a, #sidebar li.current_page_item a {
+			#sub-navigation-items li.current_page_item > a, #sidebar li.current_page_item > a {
 					color: #570026;
 					text-decoration: none;
 					}
 					
-			#sub-navigation-items li.current_page_item a:hover, #sidebar li.current_page_item a:hover {
+			#sub-navigation-items li.current_page_item > a:hover, #sidebar li.current_page_item > a:hover {
 					color: #570026;
 					text-decoration: underline;
 					}
