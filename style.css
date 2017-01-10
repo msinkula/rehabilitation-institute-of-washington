@@ -7,8 +7,6 @@ Author URI: http://www.premiumdw.com/
 */
 
 /*
-Thomas wuz here
-
 PMS222: http://slayeroffice.com/tools/color_palette/?hex=7C0040
 PMS415: http://slayeroffice.com/tools/color_palette/?hex=A6A699
 */
@@ -526,8 +524,19 @@ label {
 				border-bottom: 1px solid #a7a69a;
 				border-left: 1px solid #a7a69a;
 				padding: 10px;
-				margin: 0 0 10px 0;
 				}
+
+            #sidebar ul.children  {
+				/*color: #a7a69a;*/
+				border-right: none;
+				border-bottom: none;
+				border-left: none;
+				padding-left: 20px ;
+				}
+
+            #sidebar ul.children li {
+                list-style-type: disc;
+            }
 				
 			#sidebar div.subscribe-widget input {
 				cursor: pointer;
