@@ -34,7 +34,7 @@ add_post_type_support( 'page', 'excerpt' );
 add_theme_support( 'post-thumbnails' );
 
 // Create Custom Image Sizes
-add_image_size( 'spotlight', 600, 340, array( 'left', 'top' ) ); // 600 pixels wide by 340 pixels tall, hard crop mode
+add_image_size( 'spotlight', 600, 340, array( 'left', 'top' ) ); // 600 pixels wide by 340 pixels tall cropped fom the top left corner
 
 add_filter( 'image_size_names_choose', 'my_custom_sizes' );
 
@@ -45,12 +45,12 @@ function my_custom_sizes( $sizes ) {
 }
 //
 
-// Add a Flexslider Gallery Using Shortcode
+// Add a Flexslider Gallery Using a Function or Shortcode
 function add_flexslider() {
 						
 	global $post; // don't forget to make this a global variable inside your function or it won't f'ing work
 	
-	$attachments = get_children(array('post_parent' => $post->ID, 'order' => 'ASC', 'orderby' => 'menu_order',  'post_type' => 'attachment', 'post_mime_type' => 'image', )); // get and order the attachments
+	$attachments = get_children( array( 'post_parent' => $post->ID, 'order' => 'ASC', 'orderby' => 'menu_order',  'post_type' => 'attachment', 'post_mime_type' => 'image', ) ); // get and order the attachments
 	
 	if ( $attachments ) { // check for images attached to posting
 		
