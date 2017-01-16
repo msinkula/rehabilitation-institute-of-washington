@@ -20,9 +20,10 @@
 .flex-control-nav,
 .flex-direction-nav {margin: 0 !important; padding: 10px 10px 0 10px !important; list-style: none;}
 
+.slides,
 .slides li {
-	overflow:hidden;
-}
+    overflow: hidden;
+    }
 
 /* Icon Fonts
 *********************************/
