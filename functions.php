@@ -75,13 +75,13 @@ function add_flexslider() {
 	} // end check for images
     
     if ( has_shortcode( $content, 'flexslider' ) ) { // if using shortcode to call the slides
-        
+
         return $open . $slides . $close; // create the whole slider with a return 
-    
+
     } else { // if using hard coded function to call the slides
-		
-	   echo $open . $slides . $close; // create the whole slider with an echo
-        
+
+        echo $open . $slides . $close; // create the whole slider with an echo
+
     } // end if using shortcode
 		
 } // end function
