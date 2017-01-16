@@ -48,32 +48,32 @@ function my_custom_sizes( $sizes ) {
 // Add a Flexslider Gallery Using a Function or Shortcode
 function add_flexslider() {
 						
-	global $post; // don't forget to make this a global variable inside your function or it won't f'ing work
-	
-	$attachments = get_children( array( 'post_parent' => $post->ID, 'order' => 'ASC', 'orderby' => 'menu_order',  'post_type' => 'attachment', 'post_mime_type' => 'image', ) ); // get and order the attachments
-	
-	if ( $attachments ) { // check for images attached to posting
-		
-		$open .= '<div class="flexslider"><ul class="slides">'; // create opening markup
-			 
-		foreach ( $attachments as $attachment ) { // create the list items with images (slides)
-		            
+    global $post; // don't forget to make this a global variable inside your function or it won't f'ing work
+
+    $attachments = get_children( array( 'post_parent' => $post->ID, 'order' => 'ASC', 'orderby' => 'menu_order',  'post_type' => 'attachment', 'post_mime_type' => 'image', ) ); // get and order the attachments
+
+    if ( $attachments ) { // check for images attached to posting
+
+        $open .= '<div class="flexslider"><ul class="slides">'; // create opening markup
+
+        foreach ( $attachments as $attachment ) { // create the list items with images (slides)
+
             if ( is_front_page() ) { // for the slider on the home page
-                
+
                 $slides .= '<li id="slide-' . $attachment->ID . '">' . wp_get_attachment_image($attachment->ID, 'spotlight') . '</li>'; // create slides with spotlight size image
-                
+
             } else { // for the sliders everywhere else
-                
+
                 $slides .= '<li id="slide-' . $attachment->ID . '">' . wp_get_attachment_image($attachment->ID, 'large') . '<p class="flexslider-caption">' . get_post_field('post_excerpt', $attachment->ID) . '</p></li>' ; // create slides with large size image and caption
-                
+
             }
-			
-		} // end foreach attachment 
-		
-		$close .= '</ul></div>'; // create closing markup
-		
-	} // end check for images
-    
+
+        } // end foreach attachment 
+
+        $close .= '</ul></div>'; // create closing markup
+
+    } // end check for images
+
     if ( has_shortcode( $content, 'flexslider' ) ) { // if using shortcode to call the slides
 
         return $open . $slides . $close; // create the whole slider with a return 
@@ -128,6 +128,7 @@ function get_my_title_tag() {
 }
 //
 
+
 // Get Child Pages 
 function get_child_pages() {
 	
@@ -153,18 +154,6 @@ function get_child_pages() {
 	// reset query
 	wp_reset_query();
         
-}
-//
-
-// Get SEO Paragraph From Home Page
-function get_seo() {
-
-	$myPosting = get_post(8);
-	
-	$mySEO = $myPosting->post_content;
-	
-	echo $mySEO;
-	
 }
 //
 
