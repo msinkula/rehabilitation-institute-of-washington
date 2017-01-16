@@ -341,10 +341,6 @@ label {
     body.home #spotlight ol.flex-control-nav {
         bottom: 10px !important;
     }
-
-    p.flexslider-caption {
-        clear: both;
-    }
 		
 	#spotlight-home-quote {
 		font-family: "SquareSerifMedium", sans-serif;

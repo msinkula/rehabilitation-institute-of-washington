@@ -64,7 +64,7 @@ function add_flexslider() {
                 
             } else { // for the sliders everywhere else
                 
-                $slides .= '<li id="slide-' . $attachment->ID . '">' . wp_get_attachment_image($attachment->ID, 'large') . '</li><p class="flexslider-caption">' . get_post_field('post_excerpt', $attachment->ID) . '</p>' ; // create slides with large size image and caption
+                $slides .= '<li id="slide-' . $attachment->ID . '">' . wp_get_attachment_image($attachment->ID, 'large') . '<p class="flexslider-caption">' . get_post_field('post_excerpt', $attachment->ID) . '</p></li>' ; // create slides with large size image and caption
                 
             }
 			
