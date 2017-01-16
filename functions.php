@@ -33,34 +33,63 @@ add_post_type_support( 'page', 'excerpt' );
 // Enable Featured Image
 add_theme_support( 'post-thumbnails' );
 
-// Add FlexSlider	
-function add_flexslider() { 
+// Create Custom Image Sizes
+add_image_size( 'spotlight', 600, 340, true ); // 600 pixels wide by 340 pixels tall, hard crop mode
+
+add_filter( 'image_size_names_choose', 'my_custom_sizes' );
+
+function my_custom_sizes( $sizes ) {
+    return array_merge( $sizes, array(
+        'spotlight' => __( 'Spotlight' ),
+    ) );
+}
+//
+
+// Add a Flexslider Gallery Using Shortcode
+function add_flexslider() {
+						
+	global $post; // don't forget to make this a global variable inside your function or it won't f'ing work
 	
-	$attachments = get_children(array('post_parent' => get_the_ID(), 'order' => 'ASC', 'orderby' => 'menu_order', 'post_type' => 'attachment', 'post_mime_type' => 'image'));
+	$attachments = get_children(array('post_parent' => $post->ID, 'order' => 'ASC', 'orderby' => 'menu_order',  'post_type' => 'attachment', 'post_mime_type' => 'image', )); // get and order the attachments
 	
-	if ($attachments) { // see if there are images attached to posting
-        
-		echo '<div class="flexslider">';
-		echo '<ul class="slides">';
+	if ($attachments) { // check for images attached to posting
 		
-		foreach ( $attachments as $attachment_id => $attachment ) { // create the list items for images with captions
-		
-			echo '<li>';
-			echo wp_get_attachment_image($attachment_id, 'large');
-			echo '<p class="flexslider-caption">';
-			echo get_post_field('post_excerpt', $attachment->ID);
-			echo '</p>';
-			echo '</li>';
+		$open .= '<div class="flexslider"><ul class="slides">'; // create opening markup
+			 
+		foreach ( $attachments as $attachment ) { // create the list items with images (slides)
+		            
+            if (is_front_page()) { // for the slider on the home page
+                
+                $slides .= '<li id="slide-' . $attachment->ID . '">' . wp_get_attachment_image($attachment->ID, 'spotlight') . '</li>'; // create slides with spotlight size image
+                
+            } else { // for the sliders everywhere else
+                
+                $slides .= '<li id="slide-' . $attachment->ID . '">' . wp_get_attachment_image($attachment->ID, 'large') . '</li><p class="flexslider-caption">' . get_post_field('post_excerpt', $attachment->ID) . '</p>' ; // create slides with large size image and caption
+                
+            }
 			
-		}
+		} // end foreach attachment 
 		
-		echo '</ul>';
-		echo '</div>';
+		$close .= '</ul></div>'; // create closing markup
+		
+	} // end check for images
+    
+    if ( has_shortcode( $content, 'flexslider' ) ) { // if using shortcode to call the slides
         
-	} // end see if images
-	
-} 
+        return $open . $slides . $close; // create the whole slider with a return 
+    
+    } else { // if using hard coded function to call the slides
+		
+	   echo $open . $slides . $close; // create the whole slider with an echo
+        
+    } // end if using shortcode
+		
+} // end function
+
+add_shortcode( 'flexslider', 'add_flexslider' ); // add shortcode 
 // 
+
+
 // Get My Title Tag
 function get_my_title_tag() {
 	

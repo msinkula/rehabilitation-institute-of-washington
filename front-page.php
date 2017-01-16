@@ -1,10 +1,9 @@
-<?php /* Template Name: Welcome */ ?>
-
 <?php get_header(); ?>
 
  	<!-- Begin Spotlight -->
     <div id="spotlight">
-        <img id="spotlight-home-image" src="<?php $key="banner"; echo get_post_meta($post->ID, $key, true); ?>" alt="Restoring quality and function to people&rsquo;s lives." width="600" height="340"  />
+        <!-- <img id="spotlight-home-image" src="<?php $key="banner"; echo get_post_meta($post->ID, $key, true); ?>" alt="Restoring quality and function to people&rsquo;s lives." width="600" height="340"  /> -->
+        <?php add_flexslider(); ?>
         <blockquote id="spotlight-home-quote"><?php $key="tagline"; echo get_post_meta($post->ID, $key, true); ?><a id="spotlight-home-button" href="<?php bloginfo('url'); ?>/programs-services/">Learn&nbsp;More&nbsp;&raquo;</a></blockquote>
 	</div>
     <!-- End Spotlight -->

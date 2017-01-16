@@ -318,12 +318,33 @@ label {
 		max-width: 920px;
 		margin: 0 auto;
 		background-color:#6c6c64;
-		overflow: auto;
+		overflow: hidden;
 		}
 		
 	#spotlight img {
-		float: left;
+		float: left;  
 		}
+
+    body.home #spotlight div.flexslider {
+        float: left;
+        max-width: 600px;
+        margin-bottom: 0 !important;
+        background: none !important;
+        box-shadow: none !important;
+        padding-bottom: 0 !important;
+    }
+
+    body.home #spotlight ul.slides {
+        padding: 0 !important
+    }
+
+    body.home #spotlight ol.flex-control-nav {
+        bottom: 10px !important;
+    }
+
+    p.flexslider-caption {
+        clear: both;
+    }
 		
 	#spotlight-home-quote {
 		font-family: "SquareSerifMedium", sans-serif;
@@ -915,6 +936,14 @@ label {
 		width: 65%;
 		height: auto;
 	}	
+    
+    #spotlight div.flexslider  {
+		width: 65%;
+	}
+    
+    #spotlight ul.slides li img {
+        width: 100%;
+    }
 	
 	#spotlight-home-quote {
 		font-size: 2.125em;
@@ -963,6 +992,12 @@ label {
 	#middle {
 		padding: 10px;
 	}
+    
+    #spotlight div.flexslider {
+        float: none;
+        width:  100%;
+        max-width: 100%;
+    }
 	
 	#spotlight img {
 		display: block;

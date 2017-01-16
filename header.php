@@ -49,7 +49,7 @@ Author URI: http://www.premiumdw.com/
 		
       $('.flexslider').flexslider({
         animation: "fade",
-		slideshow: false,
+		// slideshow: false,
 		smoothHeight: true,
       });
 	  
