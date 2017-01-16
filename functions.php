@@ -34,7 +34,7 @@ add_post_type_support( 'page', 'excerpt' );
 add_theme_support( 'post-thumbnails' );
 
 // Create Custom Image Sizes
-add_image_size( 'spotlight', 600, 340, true ); // 600 pixels wide by 340 pixels tall, hard crop mode
+add_image_size( 'spotlight', 600, 340, array( 'left', 'top' ) ); // 600 pixels wide by 340 pixels tall, hard crop mode
 
 add_filter( 'image_size_names_choose', 'my_custom_sizes' );
 
