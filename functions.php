@@ -11,15 +11,18 @@ Author URI: http://www.premiumdw.com/
 // Link to admin styles
 add_editor_style( 'admin.css' );
 
+
 // Register Sidebar
 register_sidebars(array('name' => 'Sidebar', 'before_widget' => '<div id="%1$s" class="widget-items %2$s">', 'after_widget'  => '</div>', 'before_title'  => '<h2 class="widget-title">', 'after_title'   => '</h2>'));
 //
 	
+
 // Register Menus
 function register_my_menus() {
   register_nav_menus(array('main-menu' => __( 'Main Menu' ),'footer-menu' => __( 'Footer Menu' )));
 }
 add_action( 'init', 'register_my_menus' );
+
 
 // Disable Post Categories
 function wpse120418_unregister_categories() {
@@ -27,11 +30,14 @@ function wpse120418_unregister_categories() {
 }
 add_action( 'init', 'wpse120418_unregister_categories' );
 
+
 // Enable Page Excerpts
 add_post_type_support( 'page', 'excerpt' );
 
+
 // Enable Featured Image
 add_theme_support( 'post-thumbnails' );
+
 
 // Create Custom Image Sizes
 add_image_size( 'spotlight', 600, 340, array( 'left', 'top' ) ); // 600 pixels wide by 340 pixels tall cropped fom the top left corner
@@ -44,6 +50,7 @@ function my_custom_sizes( $sizes ) {
     ) );
 }
 //
+
 
 // Add a Flexslider Gallery Using a Function or Shortcode
 function add_flexslider() {
