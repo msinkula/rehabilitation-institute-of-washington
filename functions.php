@@ -52,13 +52,13 @@ function add_flexslider() {
 	
 	$attachments = get_children(array('post_parent' => $post->ID, 'order' => 'ASC', 'orderby' => 'menu_order',  'post_type' => 'attachment', 'post_mime_type' => 'image', )); // get and order the attachments
 	
-	if ($attachments) { // check for images attached to posting
+	if ( $attachments ) { // check for images attached to posting
 		
 		$open .= '<div class="flexslider"><ul class="slides">'; // create opening markup
 			 
 		foreach ( $attachments as $attachment ) { // create the list items with images (slides)
 		            
-            if (is_front_page()) { // for the slider on the home page
+            if ( is_front_page() ) { // for the slider on the home page
                 
                 $slides .= '<li id="slide-' . $attachment->ID . '">' . wp_get_attachment_image($attachment->ID, 'spotlight') . '</li>'; // create slides with spotlight size image
                 
