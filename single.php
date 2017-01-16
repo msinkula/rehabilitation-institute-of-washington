@@ -9,7 +9,6 @@
     <article id="post-<?php the_ID(); ?>">
     <h2><?php the_title(); ?></h2>
 	<p class="post-data"><small>Posted on <?php the_time('F jS, Y') ?></small></p>
-    <?php add_flexslider() ?>
 	<?php the_content(); ?>
     <ul class="post-navigation">
     <li class="post-navigation-previous"><?php next_post_link('&laquo;&nbsp;%link'); ?></li>
