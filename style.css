@@ -933,7 +933,7 @@ label {
 		height: auto;
 	}	
     
-    #spotlight div.flexslider  {
+    body.home #spotlight div.flexslider  {
 		width: 65%;
 	}
     
@@ -989,7 +989,7 @@ label {
 		padding: 10px;
 	}
     
-    #spotlight div.flexslider {
+    body.home #spotlight div.flexslider {
         float: none;
         width:  100%;
         max-width: 100%;
