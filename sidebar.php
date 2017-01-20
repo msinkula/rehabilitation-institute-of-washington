@@ -14,6 +14,7 @@
 
 		$children = wp_list_pages("title_li=&child_of=".$post->ID."&echo=0" ); 
 		$parentName = get_the_title($post->ID);
+        $parentLink = get_permalink($post->ID);
 	
 	}
 
