@@ -548,7 +548,7 @@ label {
 				border-right: none;
 				border-bottom: none;
 				border-left: none;
-				padding-left: 20px ;
+                padding: 0 0 0 20px;
 				}
 
             #sidebar ul.children li {
@@ -622,6 +622,11 @@ label {
 			#sidebar li.widget li, #sidebar li.page_item {
 				border-top: 1px solid #a7a69a;
 				}
+
+            #sidebar ul.children li.page_item {
+				border-top: none;
+                padding: 0;
+				}
 								
 			#sub-navigation-items li:first-child, #sidebar li:first-child, #sidebar li.widget li:first-child {
 					border-top: none;
@@ -633,9 +638,9 @@ label {
 					}
 				
 				
-			#sub-navigation-items li a, #sidebar li a  {
+			#sidebar li a  {
 					color: #a7a69a;
-					text-decoration: underline;			
+					text-decoration: none;			
 					} 
 					
 			#sub-navigation-items li a:hover, #sidebar li a:hover {
