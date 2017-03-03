@@ -5,6 +5,7 @@
     
     <!-- Begin Text -->
     <div id="text">
+    <div id="breadcrumbs"><?php bcn_display(); ?></div> 
     <h2><?php if (is_category()) { single_cat_title(); } else { single_post_title(); } ?></h2>
     <?php while (have_posts()) : the_post(); ?>
     <article id="post-excerpt-<?php the_ID(); ?>" class="post-excerpt">

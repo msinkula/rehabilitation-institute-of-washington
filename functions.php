@@ -164,4 +164,53 @@ function get_child_pages() {
 }
 //
 
+// add the staff member profile for single view
+function add_memberprofile() {
+	
+	$theme_url = get_template_directory_uri();
+	$custom = get_post_custom();
+	$name = get_the_title();
+	$name_slug = basename(get_permalink());
+	$photo_url = wp_get_attachment_url(get_post_thumbnail_id());
+	$title = $custom["_staff_member_title"][0];
+	$email = $custom["_staff_member_email"][0];
+	$phone = $custom["_staff_member_phone"][0];
+	$bio = $custom["_staff_member_bio"][0];
+	$fb_url	= $custom["_staff_member_fb"][0];
+	$tw_url	= $custom["_staff_member_tw"][0];
+    
+	if (!empty($photo_url)) { // image
+		echo '<img class="staff-member-photo-medium" src="'.$photo_url.'" alt = "'.$name.'">';
+	}
+	
+	if (!empty($name)) { // name
+		echo '<h2 class="staff-name">'.$name.'</h2>';
+	}
+    
+    if (!empty($title)) { // name
+		echo '<h4 class="staff-title">'.$title.'</h4>';
+	}
+	
+	if (!empty($email)) { // email
+		echo '<p><a href="mailto:'.$email.'">'.$email.'</a></p>';
+	}
+	
+	if (!empty($phone)) { // phone
+		echo '<p>'.$phone.'</p>';
+	}
+	
+	if (!empty($fb_url)) { // facebook
+		echo '<a href="'.$fb_url.'" target="_blank"><img class="staff-icon-social" src="'.$theme_url.'/images/img-facebook.png" alt = "'.$name.'"></a>'; 
+	}
+	
+	if (!empty($tw_url)) { // twitter 
+		echo '<a href="'.$tw_url.'" target="_blank"><img class="staff-icon-social" src="'.$theme_url.'/images/img-twitter.png" alt = "'.$name.'"></a>'; 
+	}
+	
+	if (!empty($bio)) { // bio
+		echo '<section class="staff-bio">'.$bio.'</section>';
+	}
+	
+} // end add the staff member profile for single view
+
 ?>
